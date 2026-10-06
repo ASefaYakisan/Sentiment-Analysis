@@ -185,7 +185,7 @@ class DistilBERTSentimentAnalyzer:
         return best_f1
 
     def predict(self, texts):
-        self.model.load_state_dict(torch.load('distilbert_sentiment.pt'))  # En iyi modeli yükle
+        self.model.load_state_dict(torch.load('distilbert_sentiment.pt', map_location=self.device))  # En iyi modeli yükle
         self.model.eval()
         dataset = DistilBertDataset(pd.Series(texts), pd.Series([0] * len(texts)), self.tokenizer)
         loader = DataLoader(dataset, batch_size=8)
