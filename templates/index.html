@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duygu Analizi</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 48px auto; padding: 0 16px; color: #222; }
+    textarea { width: 100%; min-height: 120px; padding: 10px; font-size: 16px; box-sizing: border-box; }
+    button { margin-top: 12px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    .result { margin-top: 24px; padding: 16px; border-radius: 8px; font-size: 18px; }
+    .Pozitif { background: #e6f6ea; color: #1b6e2f; }
+    .Negatif { background: #fdeaea; color: #9b1c1c; }
+  </style>
+</head>
+<body>
+  <h1>Twitter Duygu Analizi</h1>
+  <p>İngilizce bir cümle yaz, model pozitif mi negatif mi olduğunu tahmin etsin.</p>
+  <form method="post">
+    <textarea name="text" placeholder="I absolutely love this new phone!">{{ user_text }}</textarea>
+    <button type="submit">Analiz Et</button>
+  </form>
+  {% if prediction %}
+  <div class="result {{ prediction }}">Sonuç: <strong>{{ prediction }}</strong></div>
+  {% endif %}
+</body>
+</html>
